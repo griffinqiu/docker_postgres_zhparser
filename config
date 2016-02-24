@@ -1,0 +1,7 @@
+#!/bin/bash
+
+psql -U postgres -d postgres <<-'EOSQL'
+  CREATE EXTENSION zhparser;
+  CREATE TEXT SEARCH CONFIGURATION hczhcfg (PARSER = zhparser);
+  ALTER TEXT SEARCH CONFIGURATION hczhcfg ADD MAPPING FOR n,v,a,i,e,l WITH simple;
+EOSQL
